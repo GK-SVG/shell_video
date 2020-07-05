@@ -49,11 +49,11 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="/">Home</a></li>
-                                        <li><a href="Courses.html">Courses</a></li>
-                                        <li><a href="{% url 'About' %}">About</a></li>
-                                        <li><a href="about.html">Blog</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a class="{% block homeactive %}{% endblock homeactive%}" href="/">Home</a></li>
+                                        <li><a class="{% block courseactive %}{% endblock courseactive%}" href="{% url 'allcourse' %}">Courses</a></li>
+                                        <li><a class="{% block aboutactive %}{% endblock aboutactive%}" href="{% url 'About' %}">About</a></li>
+                                        <li><a class="{% block blogactive %}{% endblock blogactive%}" href="about.html" target="_blank">Blog</a></li>
+                                        <li><a class="{% block contactactive %}{% endblock contactactive%}" href="{% url 'Contact' %}">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>

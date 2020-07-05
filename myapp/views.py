@@ -13,3 +13,9 @@ def course_detail(request):
 
 def about(request):
     return render(request,'myapp/about.html')
+
+def contact(request):
+    return render(request,'myapp/contact.html')
+
+def playvideo(request):
+    return render(request,'myapp/playvideo.html')
