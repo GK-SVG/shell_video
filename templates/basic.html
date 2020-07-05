@@ -23,8 +23,12 @@
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    {% comment %}
-    <link rel="stylesheet" href="{% static 'css/responsive.css' %}"> {% endcomment %}
+    {% block head %}
+    {% endblock head %}
+    <style>
+        {% block css %}
+        {% endblock css %}
+    </style>
 </head>
 
 <body>
