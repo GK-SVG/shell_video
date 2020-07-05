@@ -7,3 +7,9 @@ def index(request):
 
 def allcourse(request):
     return render(request,'myapp/allcourse.html')
+
+def course_detail(request):
+    return render(request,'myapp/course_details.html')
+
+def about(request):
+    return render(request,'myapp/about.html')
