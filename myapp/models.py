@@ -1,15 +1,4 @@
 from django.db import models
-# from django.core.validators import MaxValueValidator, MinValueValidator
-
-# # Create your models here.
-# class Course(models.Model):
-#     name=models.CharField(max_length=200)
-#     category=models.CharField(max_length=50)
-#     rate=models.IntegerField(default=5,validators=[
-#             MaxValueValidator(5),
-#             MinValueValidator(1)
-#         ])
-#     price=models.CharField(max_length=5)
 
 
 class CourseCategary(models.Model):
@@ -25,3 +14,13 @@ class CourseCategary(models.Model):
     def __str__(self):
         return self.title
             
+class CourseLesson(models.Model):
+    lesson_name=models.CharField(max_length=100)
+    lessons=models.ForeignKey(CourseCategary,on_delete=models.CASCADE,related_name='Lessons')
+    
+    class Meta:
+        db_table='course_lessons'
+    
+    def __str__(self):
+        return self.lesson_name
+    
