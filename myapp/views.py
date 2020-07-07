@@ -8,10 +8,11 @@ def index(request):
 
 
 def allcourse(request):
-    return render(request,'myapp/allcourse.html')
-
-def course_detail(request):
-    return render(request,'myapp/course_details.html')
+    courses=CourseCategary.objects.all()
+    return render(request,'myapp/allcourse.html',{'courses':courses})
+def course_detail(request,id):
+    courses=CourseCategary.objects.filter(id=id)
+    return render(request,'myapp/course_details.html',{'courses':courses})
 
 def about(request):
     return render(request,'myapp/about.html')
