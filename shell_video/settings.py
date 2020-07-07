@@ -74,14 +74,24 @@ WSGI_APPLICATION = 'shell_video.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'default':{
+        #https://www.digitalocean.com/community/tutorials/how-to-create-a-django-app-and-connect-it-to-a-database CHECK ON THIS URL FOR MORE INFO
+        'ENGINE':'django.db.backends.mysql',
+        'NAME':'mydb',
+        'USER':'gautam',
+        'PASSWORD':'gautam2520032',
+        'HOST':'localhost',
+        'PORT':'3306',
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
