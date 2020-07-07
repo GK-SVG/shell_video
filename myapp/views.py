@@ -1,8 +1,10 @@
 from django.shortcuts import render
-
+from .models import (
+    CourseCategary)
 # Create your views here.
 def index(request):
-    return render(request,'myapp/index.html')
+    courses=CourseCategary.objects.all()
+    return render(request,'myapp/index.html',{'courses':courses})
 
 
 def allcourse(request):
