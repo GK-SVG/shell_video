@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import (
-    CourseCategary)
+    CourseCategary,
+    CourseLesson)
 # Create your views here.
 def index(request):
     courses=CourseCategary.objects.all()
@@ -11,8 +12,9 @@ def allcourse(request):
     courses=CourseCategary.objects.all()
     return render(request,'myapp/allcourse.html',{'courses':courses})
 def course_detail(request,id):
-    courses=CourseCategary.objects.filter(id=id)
-    return render(request,'myapp/course_details.html',{'courses':courses})
+    course=CourseCategary.objects.get(id=id)
+    course_lessons=CourseLesson.objects.filter(lessons=course.title)
+    return render(request,'myapp/course_details.html',{'course':course,'course_lessons':course_lessons})
 
 def about(request):
     return render(request,'myapp/about.html')
