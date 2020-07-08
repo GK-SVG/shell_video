@@ -23,4 +23,14 @@ class CourseLesson(models.Model):
     
     def __str__(self):
         return self.lesson_name
+
+class Videos(models.Model):
+    video_name=models.CharField(max_length=100)
+    video_link=models.CharField(max_length=150)
+    video_lesson=models.ForeignKey(CourseLesson,on_delete=models.CASCADE,related_name='video')
+
+    class Meta:
+        db_table='videos'
+    def __str__(self):
+        return self.video_name
     
