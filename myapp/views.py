@@ -14,7 +14,6 @@ def allcourse(request):
     return render(request,'myapp/allcourse.html',{'courses':courses})
 def course_detail(request,id):
     course=CourseCategary.objects.get(id=id)
-   # course_lessons=CourseLesson.objects.filter(lessons=course.title)
     return render(request,'myapp/course_details.html',{'course':course})
 
 def about(request):
@@ -23,6 +22,7 @@ def about(request):
 def contact(request):
     return render(request,'myapp/contact.html')
 
-def playvideo(request,id):
-    video=Videos.objects.get(id=id)
-    return render(request,'myapp/playvideo.html',{'video':video})
+def playvideo(request,cid,vid):
+    course=CourseCategary.objects.get(id=cid)
+    videos=Videos.objects.get(id=vid)
+    return render(request,'myapp/playvideo.html',{'videos':videos,'course':course})
