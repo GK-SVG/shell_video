@@ -37,6 +37,7 @@
         <![endif]-->
 
     <!-- header-start -->
+
     <header>
         <div class="header-area" style="background:linear-gradient(to right,  rgb(154, 21, 243),rgb(73, 114, 211) );">
             <div id="sticky-header" class="main-header-area">
@@ -85,6 +86,14 @@
         </div>
     </header>
 {% block body %}
+{% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message: </strong> {{ message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
 {% endblock body %}
     <!-- footer -->
     <footer class="footer footer_bg_1">
@@ -204,7 +213,7 @@
                     </a>
                 </div>
                 <h3>Sign in</h3>
-                <form action="#">
+                <form action="/user/login/" method="get">
                     <div class="row">
                         <div class="col-xl-12 col-md-12">
                             <input type="email" placeholder="Enter email">
@@ -225,7 +234,8 @@
     <!-- form itself end -->
 
     <!-- form itself end-->
-    <form id="test-form2" class="white-popup-block mfp-hide">
+    <form id="test-form2" class="white-popup-block mfp-hide" action="/user/signup/" method="post">
+    {% csrf_token %}
         <div class="popup_box ">
             <div class="popup_inner">
                 <div class="logo text-center">
@@ -237,13 +247,19 @@
                 <form action="#">
                     <div class="row">
                         <div class="col-xl-12 col-md-12">
-                            <input type="email" placeholder="Enter email">
+                            <input type="name" placeholder="Enter username" name='name'>
                         </div>
                         <div class="col-xl-12 col-md-12">
-                            <input type="password" placeholder="Password">
+                            <input type="phone" placeholder="Enter mobile number" name='phone'>
                         </div>
                         <div class="col-xl-12 col-md-12">
-                            <input type="Password" placeholder="Confirm password">
+                            <input type="email" placeholder="Enter email" name='email'>
+                        </div>
+                        <div class="col-xl-12 col-md-12">
+                            <input type="password" placeholder="Password" name='pass1'>
+                        </div>
+                        <div class="col-xl-12 col-md-12">
+                            <input type="Password" placeholder="Confirm password" name='pass2'>
                         </div>
                         <div class="col-xl-12">
                             <button type="submit" class="boxed_btn_orange">Sign Up</button>
