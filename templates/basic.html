@@ -83,17 +83,8 @@
                     </div>
                 </div>
             </div>
-        </div>
     </header>
 {% block body %}
-{% for message in messages %}
-  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-    <strong>Message: </strong> {{ message}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  {% endfor %}
 {% endblock body %}
     <!-- footer -->
     <footer class="footer footer_bg_1">
@@ -235,6 +226,16 @@
 
     <!-- form itself end-->
     <form id="test-form2" class="white-popup-block mfp-hide" action="/user/signup/" method="post">
+        {% if messages %}
+{% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message: </strong> {{ message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+{% endif %}
     {% csrf_token %}
         <div class="popup_box ">
             <div class="popup_inner">
@@ -244,28 +245,26 @@
                     </a>
                 </div>
                 <h3>Resistration</h3>
-                <form action="#">
                     <div class="row">
                         <div class="col-xl-12 col-md-12">
-                            <input type="name" placeholder="Enter username" name='name'>
+                            <input type="name" placeholder="Enter username" name='name' required='true'>
                         </div>
                         <div class="col-xl-12 col-md-12">
-                            <input type="phone" placeholder="Enter mobile number" name='phone'>
+                            <input type="phone" placeholder="Enter mobile number" name='phone' required='true'>
                         </div>
                         <div class="col-xl-12 col-md-12">
-                            <input type="email" placeholder="Enter email" name='email'>
+                            <input type="email" placeholder="Enter email" name='email' required='true'>
                         </div>
                         <div class="col-xl-12 col-md-12">
-                            <input type="password" placeholder="Password" name='pass1'>
+                            <input type="password" placeholder="Password" name='pass1' required='true'>
                         </div>
                         <div class="col-xl-12 col-md-12">
-                            <input type="Password" placeholder="Confirm password" name='pass2'>
+                            <input type="Password" placeholder="Confirm password" name='pass2' required='true'>
                         </div>
                         <div class="col-xl-12">
                             <button type="submit" class="boxed_btn_orange">Sign Up</button>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
     </form>
