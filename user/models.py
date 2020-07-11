@@ -8,6 +8,7 @@ class Users(models.Model):
     password=models.CharField(max_length=16)
     phone=models.CharField(max_length=15)
     last_login=models.DateTimeField(auto_now_add=True)
+    mail_validate=models.IntegerField(default=0)
     class Meta:
         db_table='users'
     def __str__(self):

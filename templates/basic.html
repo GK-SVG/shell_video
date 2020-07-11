@@ -130,21 +130,6 @@
 
                         </div>
                     </div>
-                    {% comment %} <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <h3 class="footer_title">
-                                Courses
-                            </h3>
-                            <ul>
-                                <li><a href="#">Wordpress</a></li>
-                                <li><a href="#"> Photoshop</a></li>
-                                <li><a href="#">Illustrator</a></li>
-                                <li><a href="#">Adobe XD</a></li>
-                                <li><a href="#">UI/UX</a></li>
-                            </ul>
-
-                        </div>
-                    </div> {% endcomment %}
                     <div class="col-xl-2 col-md-6 col-lg-2">
                         <div class="footer_widget">
                             <h3 class="footer_title">
@@ -226,16 +211,6 @@
 
     <!-- form itself end-->
     <form id="test-form2" class="white-popup-block mfp-hide" action="/user/signup/" method="post">
-        {% if messages %}
-{% for message in messages %}
-  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-    <strong>Message: </strong> {{ message}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  {% endfor %}
-{% endif %}
     {% csrf_token %}
         <div class="popup_box ">
             <div class="popup_inner">
@@ -269,7 +244,15 @@
         </div>
     </form>
     <!-- form itself end -->
+{% if messages %}
+    {% for message in messages %}
 
+    <script>
+        alert("{{ message }}");
+    </script>
+
+    {% endfor %}
+    {% endif %}
 {% block js %}
 {% endblock js %}
     <!-- JS here -->
