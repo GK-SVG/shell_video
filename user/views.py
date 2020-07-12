@@ -7,7 +7,20 @@ from services.views import send_verification_link
    
 
 def login(request):
-    return HttpResponse('this is login')
+    if request.method=='POST':
+        email=request.POST['email']
+        password=request.POST['Password']
+        try:
+            user=Users.objects.get(email=email,password=password)
+            if user.mail_validate==0:
+                token=send_verification_link(user)
+                return HttpResponse('Please check your mail to conform your email')
+            else:
+                return HttpResponse('You are a validated user')
+        except:
+            return HttpResponse('Please check your credentials')
+
+    
 
 def signup(request):
     if request.method=='POST':

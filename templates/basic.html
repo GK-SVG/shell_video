@@ -180,7 +180,8 @@
 
 
     <!-- form itself end-->
-    <form id="test-form" class="white-popup-block mfp-hide">
+    <form id="test-form" class="white-popup-block mfp-hide" action="/user/login/" method="post">
+    {% csrf_token %}
         <div class="popup_box ">
             <div class="popup_inner">
                 <div class="logo text-center">
@@ -192,10 +193,10 @@
                 <form action="/user/login/" method="get">
                     <div class="row">
                         <div class="col-xl-12 col-md-12">
-                            <input type="email" placeholder="Enter email">
+                            <input type="email" placeholder="Enter email" name='email'>
                         </div>
                         <div class="col-xl-12 col-md-12">
-                            <input type="password" placeholder="Password">
+                            <input type="password" placeholder="Password" name="Password">
                         </div>
                         <div class="col-xl-12">
                             <button type="submit" class="boxed_btn_orange">Sign in</button>
