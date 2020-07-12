@@ -58,4 +58,5 @@ def signup(request):
         return redirect('')
 
 def logout(request):
-    return HttpResponse('this is logout')
+    request.session.flush()
+    return redirect('/')
