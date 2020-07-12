@@ -16,7 +16,9 @@ def login(request):
                 token=send_verification_link(user)
                 return HttpResponse('Please check your mail to conform your email')
             else:
-                return HttpResponse('You are a validated user')
+                request.session['user']=user.user
+                request.session['uid']=user.id
+                return redirect('/')
         except:
             return HttpResponse('Please check your credentials')
 

@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -26,8 +27,13 @@
     {% block head %}
     {% endblock head %}
     <style>
-        {% block css %}
-        {% endblock css %}
+        {
+            % block css %
+        }
+
+            {
+            % endblock css %
+        }
     </style>
 </head>
 
@@ -54,22 +60,45 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="{% block homeactive %}{% endblock homeactive%}" href="/">Home</a></li>
-                                        <li><a class="{% block courseactive %}{% endblock courseactive%}" href="{% url 'allcourse' %}">Courses</a></li>
-                                        <li><a class="{% block aboutactive %}{% endblock aboutactive%}" href="{% url 'About' %}">About</a></li>
-                                        <li><a class="{% block blogactive %}{% endblock blogactive%}" href="about.html" target="_blank">Blog</a></li>
-                                        <li><a class="{% block contactactive %}{% endblock contactactive%}" href="{% url 'Contact' %}">Contact</a></li>
+                                        <li><a class="{% block homeactive %}{% endblock homeactive%}" href="/">Home</a>
+                                        </li>
+                                        <li><a class="{% block courseactive %}{% endblock courseactive%}"
+                                                href="{% url 'allcourse' %}">Courses</a></li>
+                                        <li><a class="{% block aboutactive %}{% endblock aboutactive%}"
+                                                href="{% url 'About' %}">About</a></li>
+                                        <li><a class="{% block blogactive %}{% endblock blogactive%}" href="about.html"
+                                                target="_blank">Blog</a></li>
+                                        <li><a class="{% block contactactive %}{% endblock contactactive%}"
+                                                href="{% url 'Contact' %}">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="log_chat_area d-flex align-items-center">
+                                {% if request.session.user %}
+                                <ul class="navbar-nav ml-2">
+                                    <li class="nav-item dropdown">
+                                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                                            id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false"
+                                            style="background:linear-gradient(to right,  rgb(154, 21, 243),rgb(73, 114, 211) );">
+                                            <i class="flaticon-user"></i>{{request.session.user}}
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"
+                                            style="background:linear-gradient(to right,  rgb(154, 21, 243),rgb(73, 114, 211) );">
+                                            <a class="dropdown-item" href="/logout/">Logout</a>
+                                            <a class="dropdown-item" href="/orders/">Tranjactions</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                                {% else %}
                                 <a href="#test-form" class="login popup-with-form">
                                     <i class="flaticon-user"></i>
                                     <span>log in</span>
                                 </a>
-                                <div class="live_chat_btn">
+                                {% endif %}
+                                <div class="live_chat_btn ml-3">
                                     <a class="boxed_btn_orange" href="#">
                                         <i class="fa fa-phone"></i>
                                         <span>+91 9116417016</span>
@@ -84,8 +113,8 @@
                 </div>
             </div>
     </header>
-{% block body %}
-{% endblock body %}
+    {% block body %}
+    {% endblock body %}
     <!-- footer -->
     <footer class="footer footer_bg_1">
         <div class="footer_top">
@@ -181,7 +210,7 @@
 
     <!-- form itself end-->
     <form id="test-form" class="white-popup-block mfp-hide" action="/user/login/" method="post">
-    {% csrf_token %}
+        {% csrf_token %}
         <div class="popup_box ">
             <div class="popup_inner">
                 <div class="logo text-center">
@@ -212,7 +241,7 @@
 
     <!-- form itself end-->
     <form id="test-form2" class="white-popup-block mfp-hide" action="/user/signup/" method="post">
-    {% csrf_token %}
+        {% csrf_token %}
         <div class="popup_box ">
             <div class="popup_inner">
                 <div class="logo text-center">
@@ -221,31 +250,32 @@
                     </a>
                 </div>
                 <h3>Resistration</h3>
-                    <div class="row">
-                        <div class="col-xl-12 col-md-12">
-                            <input type="name" placeholder="Enter username" name='name' required='true'>
-                        </div>
-                        <div class="col-xl-12 col-md-12">
-                            <input type="phone" placeholder="Enter mobile number" name='phone' required='true'>
-                        </div>
-                        <div class="col-xl-12 col-md-12">
-                            <input type="email" placeholder="Enter email" name='email' required='true'>
-                        </div>
-                        <div class="col-xl-12 col-md-12">
-                            <input type="password" placeholder="Password" name='pass1' required='true'>
-                        </div>
-                        <div class="col-xl-12 col-md-12">
-                            <input type="Password" placeholder="Confirm password" name='pass2' required='true'>
-                        </div>
-                        <div class="col-xl-12">
-                            <button type="submit" class="boxed_btn_orange">Sign Up</button>
-                        </div>
+                <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <input type="name" placeholder="Enter username" name='name' required='true'>
                     </div>
+                    <div class="col-xl-12 col-md-12">
+                        <input type="phone" placeholder="Enter mobile number" name='phone' required='true'>
+                    </div>
+                    <div class="col-xl-12 col-md-12">
+                        <input type="email" placeholder="Enter email" name='email' required='true'>
+                    </div>
+                    <div class="col-xl-12 col-md-12">
+                        <input type="password" placeholder="Password" name='pass1' required='true'>
+                    </div>
+                    <div class="col-xl-12 col-md-12">
+                        <input type="Password" placeholder="Confirm password" name='pass2' required='true'>
+                    </div>
+                    <div class="col-xl-12">
+                        <button type="submit" class="boxed_btn_orange">Sign Up</button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
+
     <!-- form itself end -->
-{% if messages %}
+    {% if messages %}
     {% for message in messages %}
 
     <script>
@@ -254,8 +284,8 @@
 
     {% endfor %}
     {% endif %}
-{% block js %}
-{% endblock js %}
+    {% block js %}
+    {% endblock js %}
     <!-- JS here -->
     <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
     <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
