@@ -47,8 +47,9 @@ def signup(request):
         # creating user
         try:
             myuser=Users.objects.get(user=username)
+            myuser2=Users.objects.get(email=email)
             messages.error(request,'The username you entered has already been taken. Please try another username.')
-            return HttpResponse('The username you entered has already been taken. Please try another username')
+            return HttpResponse('The username/email you entered has already been taken. Please try another username/email')
         except:
             myuser = Users(user=username,email=email,password=pass1,phone=phone)
             myuser.save()
@@ -63,4 +64,13 @@ def logout(request):
 
 
 def reset_password(request):
-    return HttpResponse('reset password')  
+    if request.method=='POST':
+        email=request.POST['email']
+        try:
+            user=Users.objects.get(email=email)
+            print(user)
+            return HttpResponse('reset password')
+        except:
+            return HttpResponse('email invalid')
+
+      
