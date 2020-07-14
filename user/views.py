@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
 from .models import Users
-from services.views import send_verification_link
+from services.views import send_verification_link,reset_password_mail_validation
 
 
    
@@ -53,7 +53,7 @@ def signup(request):
         except:
             myuser = Users(user=username,email=email,password=pass1,phone=phone)
             myuser.save()
-            token=send_verification_link(myuser)
+            send_verification_link(myuser)
             return HttpResponse('Account created successfully  Please check your mail to conform your email')      
     else:
         return redirect('')
@@ -66,9 +66,12 @@ def logout(request):
 def reset_password(request):
     if request.method=='POST':
         email=request.POST['email']
+        print(email)
         try:
             user=Users.objects.get(email=email)
             print(user)
+            reset_password_mail_validation(user)
+            #print(reset_password_token)
             return HttpResponse('reset password')
         except:
             return HttpResponse('email invalid')
