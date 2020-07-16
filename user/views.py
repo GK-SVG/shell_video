@@ -66,14 +66,10 @@ def logout(request):
 def reset_password(request):
     if request.method=='POST':
         email=request.POST['email']
-        print(email)
-        try:
-            user=Users.objects.get(email=email)
-            print(user)
-            reset_password_mail_validation(user)
-            #print(reset_password_token)
-            return HttpResponse('reset password')
-        except:
-            return HttpResponse('email invalid')
-
+        user=Users.objects.get(email=email)
+        print('user===',user.email)
+        print('user===',user.last_login)
+        token=reset_password_mail_validation(user)
+        return HttpResponse('reset password ',token)
+       
       
