@@ -77,7 +77,11 @@
                             <i class="fa fa-play"></i>
                         </a>
                     </div>
+                    {% if request.session.user %}
                     <a href="#" class="boxed_btn mt-2">Buy Course</a>
+                    {% else %}
+                    <a href="#test-form" class="boxed_btn mt-2 login popup-with-form">Log in for Buy</a>
+                    {% endif %}
                     <div class="feedback_info">
                         <h3>Write your feedback</h3>
                         <p>Your rating</p>
@@ -164,5 +168,4 @@
         </div>
     </div>
 </div>
-<!-- our_courses_end -->
 {% endblock body %}
