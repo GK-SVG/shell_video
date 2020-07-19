@@ -33,4 +33,15 @@ class Videos(models.Model):
         db_table='videos'
     def __str__(self):
         return self.video_name
+
+class UserPurchagedCourse(models.Model):
+    cid=models.IntegerField()
+    uid=models.IntegerField()
+    price=models.IntegerField()
+
+    class Meta:
+        db_table='user_purchaged_course'
+
+    def __str__(self):
+        return 'User ID '+str(self.uid)
     

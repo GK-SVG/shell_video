@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse,redirect
 from .models import (
     CourseCategary,
     CourseLesson,
-    Videos)
+    Videos,
+    UserPurchagedCourse)
 # Create your views here.
 def index(request):
     courses=CourseCategary.objects.all()
@@ -26,3 +27,15 @@ def playvideo(request,cid,vid):
     course=CourseCategary.objects.get(id=cid)
     videos=Videos.objects.get(id=vid)
     return render(request,'myapp/playvideo.html',{'videos':videos,'course':course})
+
+def buy_course(request,cid):
+    if request.method=='POST':
+        course_id=request.POST['cid']
+        uid=request.session['uid']
+        price=request.POST['price']
+        UserPurchagedCourse(cid=course_id,uid=uid,price=price).save()
+        return redirect('/')
+    if request.method=='GET':
+        course=CourseCategary.objects.get(id=cid)
+        return render(request,'myapp/buy_course.html',{'course':course})
+        
