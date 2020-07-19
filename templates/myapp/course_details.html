@@ -78,7 +78,9 @@
                         </a>
                     </div>
                     {% if request.session.user %}
-                    <a href="#" class="boxed_btn mt-2">Buy Course</a>
+                    <form action="/buy_course/{{course.id}}/" method="get">
+                        <button type="submit" class="boxed_btn mt-2">Buy Course</button>
+                    </form>
                     {% else %}
                     <a href="#test-form" class="boxed_btn mt-2 login popup-with-form">Log in for Buy</a>
                     {% endif %}
