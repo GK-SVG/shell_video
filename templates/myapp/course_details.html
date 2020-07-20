@@ -67,12 +67,12 @@
                                 <div class="card-body">
                                     {% for lesson_video in lesson.video.all %}
                                     {% if course.id in purchaged_course %}
-                                    <a href="/playvideo/{{course.id}}/{{lesson_video.id}}/"><p>{{forloop.counter}}.{{lesson_video.video_name}}</p></a>
+                                    <a href="/playvideo/{{course.id}}/{{lesson_video.id}}/"><p>{{forloop.counter}}.{{lesson_video.video_name}}<button style="background-color:tomato;">Play</button></p></a>
                                     {% else %}
                                     {% if request.session.user %}
-                                    <a href="/buy_course/{{course.id}}/"><p>{{forloop.counter}}.{{lesson_video.video_name}}<b>Locked</b></p></a>
+                                    <a href="/buy_course/{{course.id}}/"><p>{{forloop.counter}}.{{lesson_video.video_name}}<button style="background-color:tomato;">Locked</button></p></a>
                                     {% else %}
-                                    <a href="#test-form" class="login popup-with-form"><p>{{forloop.counter}}.{{lesson_video.video_name}}<b>Locked</b></p></a>
+                                    <a href="#test-form" class="login popup-with-form"><p>{{forloop.counter}}.{{lesson_video.video_name}}<button style="background-color:tomato;">Locked</button></p></a>
                                     {% endif %}
                                     {% endif %}
                                     {% endfor %}
@@ -86,7 +86,7 @@
                 <div class="courses_sidebar">
                     <div class="video_thumb">
                         <img src="{{course.image.url}}" alt="" style="height:30em;">
-                        <a href="/playvideo/">
+                        <a href="#">
                             <i class="fa fa-play"></i>
                         </a>
                     </div>

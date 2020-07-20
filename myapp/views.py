@@ -6,8 +6,15 @@ from .models import (
     UserPurchagedCourse)
 # Create your views here.
 def index(request):
+    try:
+        uid=request.session['uid']
+        purchaged_course=UserPurchagedCourse.objects.filter(uid=uid)
+        purchaged_course=[s.cid for s in purchaged_course]
+    except:
+        purchaged_course=[]
+        pass
     courses=CourseCategary.objects.all()
-    return render(request,'myapp/index.html',{'courses':courses})
+    return render(request,'myapp/index.html',{'courses':courses,'purchaged_course':purchaged_course})
 
 
 def allcourse(request):
@@ -38,9 +45,20 @@ def contact(request):
     return render(request,'myapp/contact.html')
 
 def playvideo(request,cid,vid):
-    course=CourseCategary.objects.get(id=cid)
-    videos=Videos.objects.get(id=vid)
-    return render(request,'myapp/playvideo.html',{'videos':videos,'course':course})
+    try:
+        uid=request.session['uid']
+        user_courses=UserPurchagedCourse.objects.filter(uid=uid)
+        user_courses=[c.cid for c in user_courses]
+        if cid in user_courses:
+            course=CourseCategary.objects.get(id=cid)
+            videos=Videos.objects.get(id=vid)
+            return render(request,'myapp/playvideo.html',{'videos':videos,'course':course})
+        else:
+            purchaged_course=[]
+            course=CourseCategary.objects.get(id=cid)
+            return render(request,'myapp/course_details.html',{'course':course,'purchaged_course':purchaged_course})
+    except:
+        return redirect('/')
 
 def buy_course(request,cid):
     if request.method=='POST':
