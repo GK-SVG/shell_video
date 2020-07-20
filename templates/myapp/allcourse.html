@@ -26,12 +26,19 @@
                                         <i class="flaticon-mark-as-favorite-star"></i>
                                         <span><b>{{course.language}}</b></span>
                                     </div>
+                                    {% if course.id in purchaged_course %}
                                     <div class="prise">
-                                        <span class="offer">RS4000</span>
+                                        <span class="active_prise">
+                                           <b> Play</b>
+                                        </span>
+                                    </div>
+                                    {% else %}
+                                    <div class="prise">
                                         <span class="active_prise">
                                             RS{{course.price}}
                                         </span>
                                     </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

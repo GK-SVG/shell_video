@@ -11,11 +11,25 @@ def index(request):
 
 
 def allcourse(request):
+    try:
+        uid=request.session['uid']
+        purchaged_course=UserPurchagedCourse.objects.filter(uid=uid)
+        purchaged_course=[s.cid for s in purchaged_course]
+    except:
+        purchaged_course=[]
+        pass
     courses=CourseCategary.objects.all()
-    return render(request,'myapp/allcourse.html',{'courses':courses})
+    return render(request,'myapp/allcourse.html',{'courses':courses,'purchaged_course':purchaged_course})
 def course_detail(request,id):
+    try:
+        uid=request.session['uid']
+        purchaged_course=UserPurchagedCourse.objects.filter(uid=uid)
+        purchaged_course=[s.cid for s in purchaged_course]
+    except:
+        purchaged_course=[]
+        pass
     course=CourseCategary.objects.get(id=id)
-    return render(request,'myapp/course_details.html',{'course':course})
+    return render(request,'myapp/course_details.html',{'course':course,'purchaged_course':purchaged_course})
 
 def about(request):
     return render(request,'myapp/about.html')

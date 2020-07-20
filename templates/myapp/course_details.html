@@ -7,10 +7,15 @@
             <div class="col-xl-6">
                 <div class="course_text">
                     <h3>{{course.title}}</h3>
+                    {% if course.id in purchaged_course %}
                     <div class="prise">
-                        <span class="inactive">RS4000</span>
+                        <span class="active">Play</span>
+                    </div>
+                    {% else %}
+                    <div class="prise">
                         <span class="active">RS{{course.price}}</span>
                     </div>
+                    {% endif %}
                     <div class="rating">
                         <i class="flaticon-mark-as-favorite-star"></i>
                         <span><b style="font-size:2em;">{{course.difficulty}}</b></span>
@@ -61,7 +66,15 @@
                                 data-parent="#accordion">
                                 <div class="card-body">
                                     {% for lesson_video in lesson.video.all %}
+                                    {% if course.id in purchaged_course %}
                                     <a href="/playvideo/{{course.id}}/{{lesson_video.id}}/"><p>{{forloop.counter}}.{{lesson_video.video_name}}</p></a>
+                                    {% else %}
+                                    {% if request.session.user %}
+                                    <a href="/buy_course/{{course.id}}/"><p>{{forloop.counter}}.{{lesson_video.video_name}}<b>Locked</b></p></a>
+                                    {% else %}
+                                    <a href="#test-form" class="login popup-with-form"><p>{{forloop.counter}}.{{lesson_video.video_name}}<b>Locked</b></p></a>
+                                    {% endif %}
+                                    {% endif %}
                                     {% endfor %}
                                 </div>
                             </div>
@@ -78,9 +91,15 @@
                         </a>
                     </div>
                     {% if request.session.user %}
+                    {% if course.id in purchaged_course %}
+                    <form action="/buy_course/{{course.id}}/" method="get">
+                        <button type="submit" class="boxed_btn mt-2">Play</button>
+                    </form>
+                    {% else %}
                     <form action="/buy_course/{{course.id}}/" method="get">
                         <button type="submit" class="boxed_btn mt-2">Buy Course</button>
                     </form>
+                    {% endif %}
                     {% else %}
                     <a href="#test-form" class="boxed_btn mt-2 login popup-with-form">Log in for Buy</a>
                     {% endif %}
