@@ -66,7 +66,7 @@
                                                 href="{% url 'allcourse' %}">Courses</a></li>
                                         <li><a class="{% block aboutactive %}{% endblock aboutactive%}"
                                                 href="{% url 'About' %}">About</a></li>
-                                        <li><a class="{% block blogactive %}{% endblock blogactive%}" href="about.html"
+                                        <li><a class="{% block blogactive %}{% endblock blogactive%}" href="#"
                                                 target="_blank">Blog</a></li>
                                         <li><a class="{% block contactactive %}{% endblock contactactive%}"
                                                 href="{% url 'Contact' %}">Contact</a></li>
@@ -214,7 +214,7 @@
 
     <!-- form itself end-->
     <form id="test-form" class="white-popup-block mfp-hide" action="/user/login/" method="post">
-        {% csrf_token %}
+        
         <div class="popup_box ">
             <div class="popup_inner">
                 <div class="logo text-center">
@@ -230,6 +230,7 @@
                         <div class="col-xl-12 col-md-12">
                             <input type="password" placeholder="Password" name="Password">
                         </div>
+                        {% csrf_token %}
                         <div class="col-xl-12">
                             <button type="submit" class="boxed_btn_orange">Sign in</button>
                         </div>
@@ -306,7 +307,7 @@
     {% for message in messages %}
 
     <script>
-        alert("{{ message }}");
+        window.alert("{{ message }}");
     </script>
 
     {% endfor %}

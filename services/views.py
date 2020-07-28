@@ -3,6 +3,7 @@ from django.contrib.auth.tokens import default_token_generator
 from .models import StoreMailVarificatioLink,ResetPasswordLink
 from django.core.mail import send_mail 
 from django.core.mail import EmailMultiAlternatives 
+from django.contrib import messages
 # from django.template.loader import get_template 
 # from django.template import Context 
 # from django.contrib.auth import get_user_model
@@ -26,13 +27,16 @@ def validate_mail_id(request):
     try:
         validate=StoreMailVarificatioLink.objects.filter(token=token,email=email,uid=uid)
         if not validate:
-            return HttpResponse('mail validation failed')
+            messages.error(request,'Mail Validated Failed')
+            return redirect('/')
         user=Users.objects.get(id=uid)
         user.mail_validate=1
         user.save()
-        return HttpResponse('your mail validated Succsefully ' + token +' ' + email  + ' '+ str(uid))
+        messages.success(request,'Mail Validated Succesfully')
+        return redirect('/')
     except:
-        return HttpResponse('mail validation failed')
+        messages.error(request,'Mail Validated Failed')
+        return redirect('/')
 
 def reset_password_mail_validation(user):
     print('login====',user.last_login)
@@ -63,7 +67,7 @@ def reset_password(request,uid):
         pass2=request.POST['pass2']
         if pass1 != pass2 :
             messages.error(request,'Passwords do not match')
-            return HttpResponse('Passwords do not match')
+            return redirect('/')
         user.password=pass1
         user.save()
         return redirect('/')
