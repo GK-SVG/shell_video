@@ -4,6 +4,7 @@ from .models import (
     CourseLesson,
     Videos,
     UserPurchagedCourse)
+from django.contrib import messages
 # Create your views here.
 def index(request):
     try:

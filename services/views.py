@@ -1,14 +1,14 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.tokens import default_token_generator
 from .models import StoreMailVarificatioLink,ResetPasswordLink
-from django.core.mail import send_mail 
-from django.core.mail import EmailMultiAlternatives 
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.contrib import messages
-# from django.template.loader import get_template 
-# from django.template import Context 
-# from django.contrib.auth import get_user_model
 from user.models import Users 
+from django.template.loader import get_template 
+from django.template import Context
+
 # Create your views here.
+
 def send_verification_link(user):
     token=default_token_generator.make_token(user)
     StoreMailVarificatioLink(token=token,email=user.email,uid=user.id).save()
@@ -19,6 +19,7 @@ def send_verification_link(user):
     msg.attach_alternative(html_content,'text/html')
     msg.send()  
     return token
+
 
 def validate_mail_id(request):
     token=request.GET['token']
@@ -37,6 +38,7 @@ def validate_mail_id(request):
     except:
         messages.error(request,'Mail Validated Failed')
         return redirect('/')
+
 
 def reset_password_mail_validation(user):
     print('login====',user.last_login)
@@ -60,6 +62,7 @@ def validate_email_reset_password(request):
         print('email==',email,'uid==',uid)
         return render(request,'myapp/reset_password.html',{'uid':uid})
 
+
 def reset_password(request,uid):
     if request.method=='POST':
         user=Users.objects.get(id=uid)
@@ -71,4 +74,16 @@ def reset_password(request,uid):
         user.password=pass1
         user.save()
         return redirect('/')
-        
+
+def sendmailToall(request):
+    users=Users.objects.all()
+    for user in users:
+        subject,from_email,to=' Email Testing','gk32239@gmail.com',user.email
+        htmly     = get_template('myapp/Email.html')
+        d ={ 'username': user.user }
+        html_content=htmly.render(d)
+        print(html_content)
+        msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
+        msg.attach_alternative(html_content,'text/html')
+        msg.send()
+    return redirect('/')  
