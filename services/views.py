@@ -75,15 +75,3 @@ def reset_password(request,uid):
         user.save()
         return redirect('/')
 
-def sendmailToall(request):
-    users=Users.objects.all()
-    for user in users:
-        subject,from_email,to=' Email Testing','gk32239@gmail.com',user.email
-        htmly     = get_template('myapp/Email.html')
-        d ={ 'username': user.user }
-        html_content=htmly.render(d)
-        print(html_content)
-        msg = EmailMultiAlternatives(subject, html_content, from_email, [to])
-        msg.attach_alternative(html_content,'text/html')
-        msg.send()
-    return redirect('/')  

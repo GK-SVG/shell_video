@@ -5,6 +5,7 @@ from .models import (
     Videos,
     UserPurchagedCourse)
 from django.contrib import messages
+from django.core.mail import send_mail, EmailMultiAlternatives
 # Create your views here.
 def index(request):
     try:
@@ -43,6 +44,18 @@ def about(request):
     return render(request,'myapp/about.html')
 
 def contact(request):
+    if request.method=='POST':
+        message=request.POST['message']
+        name=request.POST['name']
+        email=request.POST['email']
+        user_subject=request.POST['subject']
+        subject,from_email,to=user_subject,email,'gk32239@gmail.com'
+        print(from_email)
+        html_content="Hello, I am "+ name +" "+ " "+message
+        msg = EmailMultiAlternatives(subject, html_content,[from_email,to])
+        msg.attach_alternative(html_content,'text/html')
+        msg.send()  
+        return redirect("/")   
     return render(request,'myapp/contact.html')
 
 def playvideo(request,cid,vid):
