@@ -9,7 +9,7 @@ padding: 10px;
 .btn{
 border-radius: 0;
 }
-.cart-row{
+.course-row{
 display: flex;
 align-items: flex-stretch;
 padding-bottom: 10px;
@@ -18,53 +18,34 @@ border-bottom: 1px solid #ececec;
 
 }
 .row-image{
-width: 100px;
-}
-.quantity{
-display: inline-block;
-font-weight: 700;
-padding-right:10px;
-
-
+width:20rem;height:10rem;
 }
 
-.chg-quantity{
-width: 12px;
-cursor: pointer;
-display: block;
-margin-top: 5px;
-transition:.1s;
-}
-
-.chg-quantity:hover{
-opacity: .6;
-}
 {% endblock css %}
 {% block body %}
-<div class="container" style="margin-top:7em;margin-bottom:7em;">
-	<div class="row">
+<div class="container-fluid" style="margin-top:7em;margin-bottom:7em;">
+
 		<div class="col-lg-12">
+        <h3>My Courses</h3>
 			<div class="box-element">
-				<div class="cart-row">
-					<div style="flex:1"></div>
-					<div style="flex:1"><strong>Course</strong></div>
-					<div style="flex:1"><strong>Price</strong></div>
-					<div style="flex:1"><strong>Level</strong></div>
-				</div>
 				{% for course in courses %}
-				<div class="cart-row">
-					<div style="flex:1"><img class="row-image" src=""></div>
+				<div class="course-row">
+                
+					
 					<div style="flex:1">
-						<p>{{course.name}}</p>
+						<strong>{{course.title}}</strong>
+                        <p>{{course.content}}</p>
 					</div>
 					<div style="flex:1">
-						<p>${{course.price|floatformat:2}}</p>
+						<strong>Price:-{{course.price}}</strong><br>
+                        <strong>Level:-{{course.difficulty}}</strong><br>
+                        <strong>Language:-{{course.language}}</strong><br>
+                        <b><a href="/course_detail/{{course.id}}">Watch Course...</a></b>
 					</div>
 					
 				</div>
 				{% endfor %}
 			</div>
 		</div>
-	</div>
 </div>
 {% endblock body %}

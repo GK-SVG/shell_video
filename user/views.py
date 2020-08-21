@@ -76,6 +76,6 @@ def reset_password(request):
 def profile(request,user):
     user=Users.objects.get(user=user)
     courses=UserPurchagedCourse.objects.filter(uid=user.id)
-    #courses=CourseCategary.objects.filter(id=courses.cid)
+    courses=[CourseCategary.objects.get(id=i.cid) for i in courses]
     print("user====",user,"\nCourses===",courses)
     return render(request,"myapp/userProfile.html",{"user":user,"courses":courses})

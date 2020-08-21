@@ -92,7 +92,7 @@
                     </div>
                     {% if request.session.user %}
                     {% if course.id in purchaged_course %}
-                    <form action="/buy_course/{{course.id}}/" method="get">
+                    <form action="/playvideo/{{course.id}}/1/" method="get">
                         <button type="submit" class="boxed_btn mt-2">Play</button>
                     </form>
                     {% else %}
