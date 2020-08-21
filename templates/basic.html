@@ -27,16 +27,10 @@
     {% block head %}
     {% endblock head %}
     <style>
-        {
-            % block css %
-        }
-
-            {
-            % endblock css %
-        }
+        {% block css %}
+        {% endblock css %}
     </style>
 </head>
-
 <body>
     <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -88,7 +82,7 @@
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"
                                             style="background:linear-gradient(to right,  rgb(154, 21, 243),rgb(73, 114, 211) );">
                                             <a class="dropdown-item" href="/user/logout/">Logout</a>
-                                            <a class="dropdown-item" href="/orders/">Tranjactions</a>
+                                            <a class="dropdown-item" href="/user/profile/{{request.session.user}}/">Profile</a>
                                         </div>
                                     </li>
                                 </ul>

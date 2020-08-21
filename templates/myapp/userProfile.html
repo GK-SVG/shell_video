@@ -1,0 +1,70 @@
+{% extends 'basic.html' %}
+{% block  css%}
+.box-element{
+box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+background-color: #fff;
+border-radius: 4px;
+padding: 10px;
+}
+.btn{
+border-radius: 0;
+}
+.cart-row{
+display: flex;
+align-items: flex-stretch;
+padding-bottom: 10px;
+margin-bottom: 10px;
+border-bottom: 1px solid #ececec;
+
+}
+.row-image{
+width: 100px;
+}
+.quantity{
+display: inline-block;
+font-weight: 700;
+padding-right:10px;
+
+
+}
+
+.chg-quantity{
+width: 12px;
+cursor: pointer;
+display: block;
+margin-top: 5px;
+transition:.1s;
+}
+
+.chg-quantity:hover{
+opacity: .6;
+}
+{% endblock css %}
+{% block body %}
+<div class="container" style="margin-top:7em;margin-bottom:7em;">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="box-element">
+				<div class="cart-row">
+					<div style="flex:1"></div>
+					<div style="flex:1"><strong>Course</strong></div>
+					<div style="flex:1"><strong>Price</strong></div>
+					<div style="flex:1"><strong>Level</strong></div>
+				</div>
+				{% for course in courses %}
+				<div class="cart-row">
+					<div style="flex:1"><img class="row-image" src=""></div>
+					<div style="flex:1">
+						<p>{{course.name}}</p>
+					</div>
+					<div style="flex:1">
+						<p>${{course.price|floatformat:2}}</p>
+					</div>
+					
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock body %}

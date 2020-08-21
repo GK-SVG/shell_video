@@ -51,8 +51,8 @@ def contact(request):
         user_subject=request.POST['subject']
         subject,from_email,to=user_subject,email,'gk32239@gmail.com'
         print(from_email)
-        html_content="Hello, I am "+ name +" "+ " "+message
-        msg = EmailMultiAlternatives(subject, html_content,[from_email,to])
+        html_content="Hello, I am "+ name +" "+ " "+message + "<br> FROM "+ email 
+        msg = EmailMultiAlternatives(subject, html_content,from_email,[to])
         msg.attach_alternative(html_content,'text/html')
         msg.send()  
         return redirect("/")   

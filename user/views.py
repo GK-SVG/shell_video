@@ -1,6 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
 from .models import Users
+from myapp.models import UserPurchagedCourse,CourseCategary
 from services.views import send_verification_link,reset_password_mail_validation
 
 def login(request):
@@ -72,3 +73,9 @@ def reset_password(request):
         token=reset_password_mail_validation(user)
         return redirect('/')
       
+def profile(request,user):
+    user=Users.objects.get(user=user)
+    courses=UserPurchagedCourse.objects.filter(uid=user.id)
+    #courses=CourseCategary.objects.filter(id=courses.cid)
+    print("user====",user,"\nCourses===",courses)
+    return render(request,"myapp/userProfile.html",{"user":user,"courses":courses})
