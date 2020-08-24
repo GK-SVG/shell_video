@@ -14,7 +14,7 @@
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static "css/owl.carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
@@ -31,6 +31,7 @@
         {% endblock css %}
     </style>
 </head>
+
 <body>
     <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -50,7 +51,7 @@
                                 </a>
                             </div>
                         </div>
-                        
+
                         <div class="col-xl-7 col-lg-7">
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
@@ -81,7 +82,8 @@
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"
                                             style="background:linear-gradient(to right,  rgb(154, 21, 243),rgb(73, 114, 211) );">
                                             <a class="dropdown-item" href="/user/logout/">Logout</a>
-                                            <a class="dropdown-item" href="/user/profile/{{request.session.user}}/">MyCourses</a>
+                                            <a class="dropdown-item"
+                                                href="/user/profile/{{request.session.user}}/">MyCourses</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -207,7 +209,7 @@
 
     <!-- form itself end-->
     <form id="test-form" class="white-popup-block mfp-hide" action="/user/login/" method="post">
-        
+
         <div class="popup_box ">
             <div class="popup_inner">
                 <div class="logo text-center">
@@ -216,19 +218,19 @@
                     </a>
                 </div>
                 <h3>Sign in</h3>
-                    <div class="row">
-                        <div class="col-xl-12 col-md-12">
-                            <input type="email" placeholder="Enter email" name='email'>
-                        </div>
-                        <div class="col-xl-12 col-md-12">
-                            <input type="password" placeholder="Password" name="Password">
-                        </div>
-                        {% csrf_token %}
-                        <div class="col-xl-12">
-                            <button type="submit" class="boxed_btn_orange">Sign in</button>
-                        </div>
+                <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <input type="email" placeholder="Enter email" name='email'>
                     </div>
-                
+                    <div class="col-xl-12 col-md-12">
+                        <input type="password" placeholder="Password" name="Password">
+                    </div>
+                    {% csrf_token %}
+                    <div class="col-xl-12">
+                        <button type="submit" class="boxed_btn_orange">Sign in</button>
+                    </div>
+                </div>
+
                 <p class="doen_have_acc">Don’t have an account? <a class="dont-hav-acc" href="#test-form2">Sign Up</a>
                 </p>
                 <p class="doen_have_acc"><a class="dont-hav-acc" href="#test-form3">Forget Password</a>
@@ -237,7 +239,8 @@
         </div>
     </form>
     <!-- form itself end -->
-   <form id="test-form3" class="white-popup-block mfp-hide" action="/user/reset_password/" method="post" style="margin-left:25em;">
+    <form id="test-form3" class="white-popup-block mfp-hide" action="/user/reset_password/" method="post"
+        style="margin-left:25em;">
         {% csrf_token %}
         <div class="popup_box">
             <div class="popup_inner">
@@ -326,15 +329,6 @@
     <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
     <script src="{% static 'js/plugins.js' %}"></script>
     <script src="{% static 'js/gijgo.min.js' %}"></script>
-
-    <!--contact js-->
-    <script src="{% static 'js/contact.js' %}"></script>
-    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
-    <script src="{% static 'js/jquery.form.js' %}"></script>
-    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
-    <script src="{% static 'js/mail-script.js' %}"></script>
-
     <script src="{% static 'js/main.js' %}"></script>
 </body>
-
 </html>
