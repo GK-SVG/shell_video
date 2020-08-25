@@ -4,7 +4,7 @@ from django.db import models
 class CourseCategary(models.Model):
     title=models.CharField(max_length=200)
     price=models.IntegerField(default=0)
-    image=models.ImageField(upload_to='course_categary',default='course_categary/course.png')
+    image=models.CharField(max_length=300,default='')
     language=models.CharField(max_length=30)
     difficulty=models.CharField(max_length=20,default='Beginner')
     content=models.TextField(default='')
