@@ -1,1 +1,1 @@
-web: gunicorn shell_video.wsgi --log-file -
+web: gunicorn shell_video.wsgi --log-file - 
