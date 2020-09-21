@@ -33,16 +33,19 @@ width:20rem;height:10rem;
                 
 					
 					<div style="flex:1">
-						<strong>{{course.title}}</strong>
-                        <p>{{course.content}}</p>
+						<a href="/course_detail/{{course.id}}">
+                        <img src="{{course.image}}" alt="" style="height:15em;width:25em;">
+						</a>
 					</div>
-					<div style="flex:1">
+					<div class="mt-5"style="flex:.8">
+					    <strong style="font-size:1.5em;">{{course.title}}</strong><br>
 						<strong>Price:-{{course.price}}</strong><br>
                         <strong>Level:-{{course.difficulty}}</strong><br>
-                        <strong>Language:-{{course.language}}</strong><br>
-                        <b><a href="/course_detail/{{course.id}}">Watch Course...</a></b>
+						<strong>{{course.Lessons.count}} Lessons</strong><br>
 					</div>
-					
+					<div class="mt-5" style="flex:1">
+					<a href=href="/course_detail/{{course.id}}" class="boxed_btn mt-2 login popup-with-form">Keep Watching</a>
+					</div>
 				</div>
 				{% endfor %}
 			</div>
