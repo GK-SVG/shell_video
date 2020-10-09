@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '7jq(n*7a#l-wmf^r7ju)u-fyaj*v@@z&6af!1t#t0%4yvhr2!8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['my-edumark.herokuapp.com']
 
 
 # Application definition
@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE':'django.db.backends.mysql',
         'NAME':'mydb',
         'USER':'gautam',
-        'PASSWORD':'gautam2520032',
+        'PASSWORD':'----',
         'HOST':'localhost',
         'PORT':'3306',
     }
@@ -159,7 +159,7 @@ EMAIL_MAIL_SUBJECT = 'gk32239@gmail.com'
 EMAIL_MAIL_HTML = 'mail_body.html'
 EMAIL_MAIL_PLAIN = 'mail_body.txt'
 EMAIL_PAGE_TEMPLATE = 'confirm_template.html'
-EMAIL_PAGE_DOMAIN = 'http://mysite.com/'
+EMAIL_PAGE_DOMAIN = 'http://my-edumark.herokuapp.com/'
 EMAIL_MODEL_ADMIN = False # the default value is False
 
 import django_heroku

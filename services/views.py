@@ -45,7 +45,7 @@ def reset_password_mail_validation(user):
     token=default_token_generator.make_token(user)
     print(token)
     ResetPasswordLink(token=token,email=user.email,uid=user.id).save()
-    verification_link='http://127.0.0.1:8000/services/validate_email_reset_password/?token={token}&email={email}&uid={uid}'.format(token=token,email=user.email,uid=user.id)
+    verification_link='https://my-edumark.herokuapp.com/services/validate_email_reset_password/?token={token}&email={email}&uid={uid}'.format(token=token,email=user.email,uid=user.id)
     subject,from_email,to='Reset Password','gk32239@gmail.com',user.email
     html_content='Please click on below link to reset your password\n\n ' + verification_link
     msg = EmailMultiAlternatives(subject, html_content, from_email, [to])

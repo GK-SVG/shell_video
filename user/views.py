@@ -70,6 +70,7 @@ def reset_password(request):
     if request.method=='POST':
         email=request.POST['email']
         user=Users.objects.get(email=email)
+        print(email,user)
         token=reset_password_mail_validation(user)
         return redirect('/')
       
