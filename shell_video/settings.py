@@ -154,7 +154,7 @@ EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER='gk32239@gmail.com'
-EMAIL_HOST_PASSWORD='gk=gautamkumar18emccs042'
+EMAIL_HOST_PASSWORD='--------'
 EMAIL_MAIL_SUBJECT = 'gk32239@gmail.com'
 EMAIL_MAIL_HTML = 'mail_body.html'
 EMAIL_MAIL_PLAIN = 'mail_body.txt'
