@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '7jq(n*7a#l-wmf^r7ju)u-fyaj*v@@z&6af!1t#t0%4yvhr2!8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['my-edumark.herokuapp.com']
 
@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE':'django.db.backends.mysql',
         'NAME':'mydb',
         'USER':'gautam',
-        'PASSWORD':'----',
+        'PASSWORD':'gautam2520032',
         'HOST':'localhost',
         'PORT':'3306',
     }

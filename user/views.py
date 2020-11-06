@@ -74,9 +74,11 @@ def reset_password(request):
         token=reset_password_mail_validation(user)
         return redirect('/')
       
-def profile(request,user):
+def user_courses(request,user):
     user=Users.objects.get(user=user)
     courses=UserPurchagedCourse.objects.filter(uid=user.id)
     courses=[CourseCategary.objects.get(id=i.cid) for i in courses]
-    print("user====",user,"\nCourses===",courses)
-    return render(request,"myapp/userProfile.html",{"user":user,"courses":courses})
+    #print("user====",user,"\nCourses===",courses)
+    return render(request,"myapp/userCourses.html",{"user":user,"courses":courses})
+
+

@@ -24,9 +24,10 @@ width:20rem;height:10rem;
 {% endblock css %}
 {% block body %}
 <div class="container-fluid" style="margin-top:7em;margin-bottom:7em;">
-
+        
 		<div class="col-lg-12">
-        <h3>My Courses</h3>
+		<h3>{{user.user}} Courses</h3>
+		
 			<div class="box-element">
 				{% for course in courses %}
 				<div class="course-row">
