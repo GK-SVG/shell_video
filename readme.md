@@ -17,9 +17,27 @@
 ![alt text](https://github.com/GK-SVG/shell_video/blob/master/static/readmeIMG/shell-video7.png)
 
 
-# Django Project Template
+## Want To Learn Django
+**Here Are Some Important Channels on Youtube(Search channel name on Youtube)**
+<ul>
+    <li>CodeWithHarry</li>
+    <li>geekyshows</li>
+    <li>PyPlane</li>
+    <li>CodingForEnterprenours</li>
+    <li>JustDjango</li>
+</ul>
 
-The clean, fast and right way to start a new Django `3.0.7` powered website.
+**Here Are Some Important Website(Search website on Google)**
+<ul>
+    <li>https://docs.djangoproject.com/en/3.0/intro/tutorial01/</li>
+    <li>https://djangogirls.org/</li>
+    <li>https://medium.com/</li>
+    <li>https://dev.to/</li>
+</ul>
+
+# Django Project
+
+The clean, fast and right way to start a new <a href="https://docs.djangoproject.com/en/3.0/intro/tutorial01/">Django</a>`3.0.7` powered website.
 
 ## Getting Started
 
@@ -47,5 +65,3 @@ $ python manage.py runserver
 ## Contributing
 
 I love contributions, so please feel free to fix bugs, improve things, provide documentation. Just send a pull request.
-
-
